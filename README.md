@@ -20,6 +20,11 @@ We won't be
 You need to understand something about
 - membrane proteins
 - molecular dynamics simulations
+- writing computer code (any language)
+- ideally 
+	- be familiar with VMD
+	- be familiar with simple python
+
 
 There are currently four sections to this tutorial
 1. calculate how many lipid atoms are within a set distance of the protein over time
