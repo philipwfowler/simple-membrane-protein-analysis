@@ -1,5 +1,4 @@
-simple-membrane-protein-analysis
-================================
+# simple-membrane-protein-analysis
 
 This is a short tutorial showing how to use both [VMD](http://www.ks.uiuc.edu/Research/vmd/) and [MDAnalysis](https://code.google.com/p/mdanalysis/) to analyse a molecular dynamics simulation of a membrane protein. A sample trajectory is provided (of a bacterial peptide transporter which, structurally, belongs to the Major Facilitator Superfamily if you are interested). Although the trajectory we shall use was generated using GROMACS, all the examples can, with a few tweaks, could be applied to trajectories produced by other packages, such as NAMD, CHARMM or AMBER.
 

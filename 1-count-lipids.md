@@ -1,5 +1,4 @@
-1. Calculate how many lipid atoms are within a set distance of the protein over time
-================================
+# 1. Calculate how many lipid atoms are within a set distance of the protein over time
 
 Why do we want to do this? Well, often one of the trickiest things in any membrane protein simulation is getting the protein in the membrane in the first place. There are lots of different ways of doing this and they all perturb the membrane in some way. So we need to check that the protein has become adequately embedded in the membrane during the simulation. Note that this is *separate* to looking at whether the structure of the protein has equilibrated - we shall not cover that here. This is isn't especially sophisticated, we just want to count how many lipid atoms are within a set distance of any protein atom. You can choose the distance to be what you want, some people use 0.3 nm, or you could use 0.36 nm which is about 150% the van der Waals radius of a hydrogen atom. We'll do this every timestep and then plot a graph and see if it reaches a plateau.
 
@@ -16,7 +15,7 @@ So, in pseudo-code we want to do something like
     
 I'm going to show you how to do this in both VMD and MDAnalysis to show you that simple tasks can often be done more than one way and there are advantages and disadvantages to each. 
 
-**1.1 MDAnalysis**
+## 1.1 MDAnalysis
 
 Let's start with python and MDAnalysis. One advantage of MDAnalysis is we can prototype in python (if you have it installed). So
 
@@ -83,18 +82,25 @@ or, since I have made the file executable using `chmod`  you can run it directly
 
 It should write the data to the screen (STDOUT)	
 
-**1.2 VMD**
+## 1.2 VMD
 
-Now let's try and do exactly the same thing in VMD. 
+Now let's try and do exactly the same thing in VMD. Although some analysis is done in VMD using little GUIs we are not going to do that. We are going to write some code in Tcl, which is the script language VMD exposes that lets you do this sort of thing. Tcl can feel a bit strange if you are used to programming C, python, perl etc as it has no equals sign. You'll see what I mean. First, load VMD, either by clicking the icon or typing `vmd` into your terminal.
 
-It is a bit harder to prototype here, but let's give it a shot. 
+It is a bit harder to prototype here, but let's give it a shot. You'll need to have the `Tk Console` window open: go to `Extensions` then `Tk Console` and something that looks a bit like a Terminal will appear with coloured text on a white background. Again, we shall just follow the pseudo-code, so first, let's load in the trajectory.
 
-Although some analysis is done in VMD using little GUIs we are not going to do that. We are going to write some code in Tcl, which is the script language VMD exposes that lets you do this sort of thing. Tcl can feel a bit strange if you are used to programming C, python, perl etc as it has no equals sign. You'll see what I mean. First, load VMD, either by clicking the icon or typing `vmd` into your terminal.
+	(examples) 1 % mol load gro trajectory-files/peptso-1a.gro	0	>Main< (examples) 2 % mol addfile trajectory-files/peptso-1a-100ns-dt1ns.xtc type xtc first 0 last -1 waitfor all	0
 
-**1.3 Extension exercises**
+You should now see see the waters, lipids and protein in the VMD Display. Seeing what is going on is an advantage of using VMD. Again, we shall just work on one frame. Here we bump into an annoying inconsistency between the two: VMD loads the GRO/PDB file and makes that frame 0, then it loads the trajectory (frames 1-101) and it leaves you at the last frame, 101. MDAnalysis just uses the GRO/PDB file to parse the trajectory which takes up frames 1-101 and you start at frame 1. For consistency I'm going to return to the start using the arrows in the Main window (or you could type `animate goto 1`). Now we can see how many lipid atoms are within 0.36 nm of the protein.
+
+	>Main< (examples) 7 % set lipids [atomselect top "resname POPC and within 3.6 of protein"]	atomselect1	>Main< (examples) 8 % $lipids num	1619
+
+The same answer as before which is encouraging!
+
+## 1.3 Extension exercises
 
 - Which is faster? Why do you think that is? Do you think it will always be faster?
 - Write down the disadvantages and advantages of each approach
+- Convert the script to work on a coarse-grained MARTINI simulation. What distance should you use then?
 - Add command line arguments (using an appropriate python module like getopt) to generalise the MDAnalysis version. Turn the following into arguments:
 	- the name/path of the input PDB/GRO file
 	- the name/path of the input trajectory file
