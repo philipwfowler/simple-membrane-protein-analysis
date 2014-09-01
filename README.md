@@ -1,12 +1,12 @@
 simple-membrane-protein-analysis
 ================================
 
-This is a short tutorial showing how to use both [VMD][vmd] and [MDAnalysis][mda] to analyse a molecular dynamics simulation of a membrane protein. A sample trajectory is provided (of a bacterial peptide transporter which, structurally, belongs to the Major Facilitator Superfamily if you are interested). Although the trajectory we shall use was generated using GROMACS, all the examples can, with a few tweaks, could be applied to trajectories produced by other packages, such as NAMD, CHARMM or AMBER.
+This is a short tutorial showing how to use both [VMD](http://www.ks.uiuc.edu/Research/vmd/) and [MDAnalysis][1] to analyse a molecular dynamics simulation of a membrane protein. A sample trajectory is provided (of a bacterial peptide transporter which, structurally, belongs to the Major Facilitator Superfamily if you are interested). Although the trajectory we shall use was generated using GROMACS, all the examples can, with a few tweaks, could be applied to trajectories produced by other packages, such as NAMD, CHARMM or AMBER.
 
 The aims are:
 - to show you how to run some simple analysis on a membrane protein molecular dynamics simulation
 - to encourage you to write your own analysis code, rather than use a 'script' that someone gives you 
-- to show you how simple analysis tasks can often be done more than one way. Here I shall use either [VMD][vmd] or [MDAnalysis][mda]
+- to show you how simple analysis tasks can often be done more than one way. Here I shall use either [VMD](http://www.ks.uiuc.edu/Research/vmd/) or [MDAnalysis][mda]
 - to introduce you briefly to the importance of writing good code and [Software Carpentry][swc]. Specifically to
     - test your code
     - include helpful comments
@@ -27,9 +27,9 @@ You will need to have installed
     - numpy
     - scipy
     - MDAnalysis
-- [VMD][vmd]
+- [VMD](http://www.ks.uiuc.edu/Research/vmd/)
 - a graphing package. I like [gnuplot](http://gnuplot.sourceforge.net) but XMGrace or Excel are fine too.
 
-[vmd]: http://www.ks.uiuc.edu/Research/vmd/ VMD
-[mda]: https://code.google.com/p/mdanalysis/ MDAnalysis
+[vmd]:  VMD
+[1]: https://code.google.com/p/mdanalysis/ MDAnalysis
 [swc]: http://software-carpentry.org/index.html Software Carpentry
