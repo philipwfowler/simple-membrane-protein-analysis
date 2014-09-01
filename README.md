@@ -21,6 +21,12 @@ You need to understand something about
 - membrane proteins
 - molecular dynamics simulations
 
+There are currently four sections to this tutorial
+1. calculate how many lipid atoms are within a set distance of the protein over time
+2. calculate the density profile of the different species along the membrane normal
+3. measure the depth of the centre of mass of the protein relative to the centre of mass of the bilayer over time
+4. determine which lipids belong to which leaflet
+
 You will need to have installed
 - git
 - python 2.6.X or 2.7.X, including
@@ -29,4 +35,16 @@ You will need to have installed
     - MDAnalysis
 - [VMD](http://www.ks.uiuc.edu/Research/vmd/)
 - a graphing package. I like [gnuplot](http://gnuplot.sourceforge.net) but XMGrace or Excel are fine too.
+
+To get started you will need to clone this git repository (collection of files in a folder) onto your computer. If you are using a Mac or a Linux machine, open a Terminal and check you have git by typing
+
+    git
+
+Assuming git is installed, you should then copy the address of this repository to your clipboard - click the button with the arrow pointing to the clipboard just below the textbox which has *HTTPS* above it on the right hand side of this page. Then on your machine in the terminal type
+
+    git clone https://github.com/philipwfowler/simple-membrane-protein-analysis.git
+    
+and, volia, you should have a new folder called simple-membrane-protein-analysis/ which contains this file (README.md) along with all the others. 
+
+If you don't have git installed, then you will either need to install it or  try using the appropriate [github GUI](http://git-scm.com/downloads/guis) for your platform (includes Windows). If all else fails, you can always download a zip of the repo using the "Download ZIP" button which you can find in the bottom right of this page.
 
