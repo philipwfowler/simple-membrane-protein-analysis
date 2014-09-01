@@ -7,7 +7,7 @@ import MDAnalysis
 u = MDAnalysis.Universe("trajectory-files/peptso-1a.gro","trajectory-files/peptso-1a-100ns-dt1ns.xtc")
 
 # open a file for writing the data to
-OUTPUT = open("dat/1-mda-lipid-contacts.dat",'w')
+OUTPUT = open("dat/1-count-lipids-mda.dat",'w')
 
 # iterate through the trajectory, frame by frame
 for timestep in u.trajectory:
@@ -25,7 +25,7 @@ for timestep in u.trajectory:
     print frame,lipidNumber
 
     # write the data for this timestep to the file (the bit in the brackets formats the data nicely)
-    print >> OUTPUT, "%6i %7i" % (frame,lipidNumber)
+    print >> OUTPUT, "%7i %7i" % (frame,lipidNumber)
     
 # close the file    
 OUTPUT.close

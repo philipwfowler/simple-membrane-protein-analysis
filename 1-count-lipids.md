@@ -80,7 +80,7 @@ or, since I have made the file executable using `chmod`  you can run it directly
 
 	./1-count-lipids-mdanalysis.py
 
-It should write the data to the screen (STDOUT)	
+It should write the data to the screen (STDOUT). Now you can plot the data using your preferred graphing package (I'd recommend gnuplot). Does the protein appear to be embedded?	
 
 ## 1.2 VMD
 
@@ -94,7 +94,21 @@ You should now see see the waters, lipids and protein in the VMD Display. Seeing
 
 	>Main< (examples) 7 % set lipids [atomselect top "resname POPC and within 3.6 of protein"]	atomselect1	>Main< (examples) 8 % $lipids num	1619
 
-The same answer as before which is encouraging!
+The same answer as before which is encouraging! Now we can put the logic into a Tcl script, add the loop and file output and some comments, as before. To run the script, either type the following the Tk Console.
+
+	>Main< (examples) 13 % source 1-count-lipids-vmd.tcl
+
+Or, close VMD and from the terminal you can launch VMD without a Display and load the Tcl file
+
+	$ vmd -dispdev text -e 1-count-lipids.vmd
+
+Again, you can plot the data to see if the protein is embedded. But do we have the same results we got using MDAnalysis? Try using `diff` which is a very useful Linux command that compares two text files.
+
+	$ diff dat/1-count-lipids-mda.dat dat/1-count-lipids-vmd.dat 
+	0a1
+	>       0     730
+
+So the only difference is that, as we expected, the VMD file contains a frame 0 which is an analysis of the GRO file.
 
 ## 1.3 Extension exercises
 

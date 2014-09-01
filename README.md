@@ -27,8 +27,8 @@ You need to understand something about
 
 There are currently four sections to this tutorial
 1. calculate how many lipid atoms are within a set distance of the protein over time
-2. calculate the density profile of the different species along the membrane normal
-3. measure the depth of the centre of mass of the protein relative to the centre of mass of the bilayer over time
+2. measure the depth of the centre of mass of the protein relative to the centre of mass of the bilayer over time
+3. calculate the density profile of the different species along the membrane normal
 4. determine which lipids belong to which leaflet
 
 You will need to have installed
