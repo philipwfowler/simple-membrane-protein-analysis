@@ -72,7 +72,7 @@ I haven't put the output as it would take up a lot of space. You should see a me
 	In [15]: lipids.numberOfAtoms()
 	Out[15]: 1619
 
-Hurray, an integer. That is basically it; we know what frame we are on and how to count the number of lipids within a specified distance of a protein. In the supplied python script (1-count-lipids-mdanalysis.py) I've just added some comments, the loop over time steps and the logic to write the numbers to a file and the screen (i.e. STDOUT).  you can run it either by typing
+Hurray, an integer. That is basically it; we know what frame we are on and how to count the number of lipids within a specified distance of a protein. In the supplied python script (https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/examples/1-count-lipids-mda.py 1-count-lipids-mdanalysis.py) I've just added some comments, the loop over time steps and the logic to write the numbers to a file and the screen (i.e. STDOUT).  you can run it either by typing
 
 	python 1-count-lipids-mdanalysis.py
 
