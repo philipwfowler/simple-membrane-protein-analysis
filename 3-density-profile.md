@@ -1,6 +1,6 @@
 # 3. Calculate the density profile of the different species along the membrane normal
 
-Hopefully we've convinced ourselves that our transporter protein is embedded after ~50 ns. Now we'd like to look at where the protein sits along the membrane normal in relation to the different components of the phospholipids. 
+Hopefully we've convinced ourselves that our transporter protein is embedded into the lipid bilayer after ~50 ns and isn't moving about a lot. Now we'd like to look at where the protein sits along the membrane normal in relation to the different components of the phospholipids. 
 
 Let's think about what we want to do. In a nutshell, we want to build up histograms along the membrane normal (i.e. $z$) of say, the protein, the phosphate groups, the lipid tails, the headgroups and water. We might also want to split the protein down into individual transmembrane helices, but let's see what the result looks like first. So each frame, we want to measure the position along *z* of each of our chosen components, subtract the centre of mass of the membrane to normalise it and add it to a list. When we've parsed all our chosen frames, we then histogram each list and write out the results to file. So the pseudo-code looks something like
 
@@ -16,7 +16,7 @@ Let's think about what we want to do. In a nutshell, we want to build up histogr
 		write to the file
 		close the file	
 
-This is a lot easier in python but not in VMD because python has, in addition to MDAnalysis, some other very useful modules, specifically numpy and scipy, which provide all sorts of useful numerical and scientific functionality. So, I'm only going to show you this in python. As before, let's prototype but only look at one species (the phosphate atoms) from one frame. First let's load the trajectory.
+This is a *lot* easier in python than in VMD because python has, in addition to MDAnalysis, some other very useful modules, specifically numpy and scipy, which provide all sorts of useful numerical and scientific functionality. So, I'm only going to show you this in python. As before, let's prototype but only look at one species (the phosphate atoms) from one frame. First let's load the trajectory.
 
 	In [2]: import MDAnalysis
 	
