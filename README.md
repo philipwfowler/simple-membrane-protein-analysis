@@ -21,22 +21,22 @@ You need to understand something about
 - molecular dynamics simulations
 - writing computer code (any language)
 - ideally 
-	- be familiar with VMD
+	- be familiar with [VMD](http://www.ks.uiuc.edu/Research/vmd/)
 	- be familiar with simple python
 
 
-There are currently four sections to this tutorial
+There are currently three sections to this tutorial:
+
 1. calculate how many lipid atoms are within a set distance of the protein over time
 2. measure the depth of the centre of mass of the protein relative to the centre of mass of the bilayer over time
-3. calculate the density profile of the different species along the membrane normal
-4. determine which lipids belong to which leaflet
+3. some more advanced techniques
 
 You will need to have installed
 - git
 - python 2.6.X or 2.7.X, including
-    - numpy
-    - scipy
-    - MDAnalysis
+    - [numpy](http://www.numpy.org)
+    - [scipy](http://www.scipy.org)
+    - [MDAnalysis](https://code.google.com/p/mdanalysis/)
 - [VMD](http://www.ks.uiuc.edu/Research/vmd/)
 - a graphing package. I like [gnuplot](http://gnuplot.sourceforge.net) but XMGrace or Excel are fine too.
 

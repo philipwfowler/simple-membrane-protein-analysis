@@ -13,11 +13,11 @@ So, in pseudo-code we want to do something like
         write out the frame number and number of lipid atoms to disc
     close the file
     
-I'm going to show you how to do this in both VMD and MDAnalysis to show you that simple tasks can often be done more than one way and there are advantages and disadvantages to each. 
+I'm going to show you how to do this in both [VMD](http://www.ks.uiuc.edu/Research/vmd/) and [MDAnalysis](https://code.google.com/p/mdanalysis/) to show you that simple tasks can often be done more than one way and there are advantages and disadvantages to each. 
 
 ## 1.1 MDAnalysis
 
-Let's start with python and MDAnalysis. One advantage of MDAnalysis is we can prototype in python (if you have it installed). So
+Let's start with python and [MDAnalysis](https://code.google.com/p/mdanalysis/). One advantage of [MDAnalysis](https://code.google.com/p/mdanalysis/) is we can prototype in python (if you have it installed). So
 
 	$ ipython
 	Python 2.7.6 (default, Nov 18 2013, 15:12:51) 
@@ -31,7 +31,7 @@ Let's start with python and MDAnalysis. One advantage of MDAnalysis is we can pr
 	
 	In [1]:
 
-First we need to load the MDAnalysis module
+First we need to load the [MDAnalysis](https://code.google.com/p/mdanalysis/) module
 
 	In [2]: import MDAnalysis
 	
@@ -39,7 +39,7 @@ Now we follow the pseudocode and load the trajectory
 
 	In [3]: u = MDAnalysis.Universe("example-trajectory/peptso-1a.gro","example-trajectory/peptso-1a-100ns-dt1ns.xtc"
 
-All the coordinates across all the frames are now stored in the MDAnalysis Universe object which I've called u. 
+All the coordinates across all the frames are now stored in the MDAnalysis [Universe](https://code.google.com/p/mdanalysis/wiki/Universe) object which I've called u. 
 
 	In [4]: u
 	Out[4]: <Universe with 76245 atoms>
@@ -56,14 +56,14 @@ Since we are doing this interactively to begin with, it is easiest to just work 
 	In [5]: u.trajectory.frame
 	Out[5]: 1
 
-Ok, good. So to do this we need to select the atoms which in MDAnalysis is done using the `selectAtoms` universe method.
+Ok, good. So to do this we need to select the atoms which in [MDAnalysis](https://code.google.com/p/mdanalysis/) is done using the `selectAtoms` universe method.
 
 	In [8]: lipids = u.selectAtoms("resname POPC and around 3.6 protein")
 
 	In [9]: lipids
 	Out[9]: <AtomGroup with 1619 atoms>
 
-The syntax that `selectAtoms` understands is based on CHARMM and, as we shall see, is subtly different to that understood by VMD. Although we can understand from the output that we have found 1619 atoms, that is not in a format that we could write to disc. So, let's look what methods and properties lipids has
+The syntax that `selectAtoms` understands is based on CHARMM and, as we shall see, is subtly different to that understood by [VMD](http://www.ks.uiuc.edu/Research/vmd/). Although we can understand from the output that we have found 1619 atoms, that is not in a format that we could write to disc. So, let's look what methods and properties lipids has
 
 	In [12]: lipids.
 
@@ -84,13 +84,13 @@ It should write the data to the screen (STDOUT). Now you can plot the data using
 
 ## 1.2 VMD
 
-Now let's try and do exactly the same thing in VMD. Although some analysis is done in VMD using little GUIs we are not going to do that. We are going to write some code in Tcl, which is the script language VMD exposes that lets you do this sort of thing. Tcl can feel a bit strange if you are used to programming C, python, perl etc as it has no equals sign. You'll see what I mean. First, load VMD, either by clicking the icon or typing `vmd` into your terminal.
+Now let's try and do exactly the same thing in [VMD](http://www.ks.uiuc.edu/Research/vmd/). Although some analysis is done in [VMD](http://www.ks.uiuc.edu/Research/vmd/) using little GUIs we are not going to do that. We are going to write some code in Tcl, which is the script language [VMD](http://www.ks.uiuc.edu/Research/vmd/) exposes that lets you do this sort of thing. Tcl can feel a bit strange if you are used to programming C, python, perl etc as it has no equals sign. You'll see what I mean. First, load [VMD](http://www.ks.uiuc.edu/Research/vmd/), either by clicking the icon or typing `vmd` into your terminal.
 
 It is a bit harder to prototype here, but let's give it a shot. You'll need to have the `Tk Console` window open: go to `Extensions` then `Tk Console` and something that looks a bit like a Terminal will appear with coloured text on a white background. Again, we shall just follow the pseudo-code, so first, let's load in the trajectory.
 
 	(examples) 1 % mol load gro trajectory-files/peptso-1a.gro	0	>Main< (examples) 2 % mol addfile trajectory-files/peptso-1a-100ns-dt1ns.xtc type xtc first 0 last -1 waitfor all	0
 
-You should now see see the waters, lipids and protein in the VMD Display. Seeing what is going on is an advantage of using VMD. Again, we shall just work on one frame. Here we bump into an annoying inconsistency between the two: VMD loads the GRO/PDB file and makes that frame 0, then it loads the trajectory (frames 1-101) and it leaves you at the last frame, 101. MDAnalysis just uses the GRO/PDB file to parse the trajectory which takes up frames 1-101 and you start at frame 1. For consistency I'm going to return to the start using the arrows in the Main window (or you could type `animate goto 1`). Now we can see how many lipid atoms are within 0.36 nm of the protein.
+You should now see see the waters, lipids and protein in the VMD Display. Seeing what is going on is an advantage of using [VMD](http://www.ks.uiuc.edu/Research/vmd/). Again, we shall just work on one frame. Here we bump into an annoying inconsistency between the two: [VMD](http://www.ks.uiuc.edu/Research/vmd/) loads the GRO/PDB file and makes that frame 0, then it loads the trajectory (frames 1-101) and it leaves you at the last frame, 101. [MDAnalysis](https://code.google.com/p/mdanalysis/) just uses the GRO/PDB file to parse the trajectory which takes up frames 1-101 and you start at frame 1. For consistency I'm going to return to the start using the arrows in the Main window (or you could type `animate goto 1`). Now we can see how many lipid atoms are within 0.36 nm of the protein.
 
 	>Main< (examples) 7 % set lipids [atomselect top "resname POPC and within 3.6 of protein"]	atomselect1	>Main< (examples) 8 % $lipids num	1619
 
@@ -98,24 +98,24 @@ The same answer as before which is encouraging! Now we can put the logic into a 
 
 	>Main< (examples) 13 % source 1-count-lipids-vmd.tcl
 
-Or, close VMD and from the terminal you can launch VMD without a Display and load the Tcl file
+Or, close [VMD](http://www.ks.uiuc.edu/Research/vmd/) and from the terminal you can launch [VMD](http://www.ks.uiuc.edu/Research/vmd/) without a Display and load the Tcl file
 
 	$ vmd -dispdev text -e 1-count-lipids.vmd
 
-Again, you can plot the data to see if the protein is embedded. But do we have the same results we got using MDAnalysis? Try using `diff` which is a very useful Linux command that compares two text files.
+Again, you can plot the data to see if the protein is embedded. But do we have the same results we got using [MDAnalysis](https://code.google.com/p/mdanalysis/)? Try using `diff` which is a very useful Linux command that compares two text files.
 
 	$ diff dat/1-count-lipids-mda.dat dat/1-count-lipids-vmd.dat 
 	0a1
 	>       0     730
 
-So the only difference is that, as we expected, the VMD file contains a frame 0 which is an analysis of the GRO file.
+So the only difference is that, as we expected, the [VMD](http://www.ks.uiuc.edu/Research/vmd/) file contains a frame 0 which is an analysis of the GRO file.
 
 ## 1.3 Extension exercises
 
 - Which is faster? Why do you think that is? Do you think it will always be faster?
 - Write down the disadvantages and advantages of each approach
 - Convert the script to work on a coarse-grained MARTINI simulation. What distance should you use then?
-- Add command line arguments (using an appropriate python module like getopt) to generalise the MDAnalysis version. Turn the following into arguments:
+- Add command line arguments (using an appropriate python module like getopt) to generalise the [MDAnalysis](https://code.google.com/p/mdanalysis/) version. Turn the following into arguments:
 	- the name/path of the input PDB/GRO file
 	- the name/path of the input trajectory file
 	- the distance 

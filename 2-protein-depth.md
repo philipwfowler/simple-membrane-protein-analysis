@@ -11,15 +11,15 @@ Let's now look at how the protein is moving in the bilayer, specifically whether
         write out the frame number and the relative depth of the protein to disc
     close the file
 
-Like before, we shall do this analysis using both VMD and python/MDAnalysis and compare the results. To avoid too many gear-changes in our brains, let's do VMD first and then try MDAnalysis. 
+Like before, we shall do this analysis using both [VMD](http://www.ks.uiuc.edu/Research/vmd/) and python/[MDAnalysis](https://code.google.com/p/mdanalysis/) and compare the results. To avoid too many gear-changes in our brains, let's do [VMD](http://www.ks.uiuc.edu/Research/vmd/) first and then try [MDAnalysis](https://code.google.com/p/mdanalysis/). 
 
 ## 2.1 VMD 
 
-Fire up VMD as before and open the `Tk Console` window. First we need to load the trajectory, just as before.
+Fire up [VMD](http://www.ks.uiuc.edu/Research/vmd/) as before and open the `Tk Console` window. First we need to load the trajectory, just as before.
 
 	(examples) 1 % mol load gro trajectory-files/peptso-1a.gro	0	>Main< (examples) 2 % mol addfile trajectory-files/peptso-1a-100ns-dt1ns.xtc type xtc first 0 last -1 waitfor all	0
 
-VMD has a series of analysis commands that start with the keyword [`measure`](http://www.ks.uiuc.edu/Research/vmd/current/ug/node136.html). They tend to be quite fast as they have (mostly) been optimised in C and some of them will even run on your GPU, if you have the right drivers etc installed. The one we are going to use is `measure centre` which returns the geometric centre of an atom selection.
+[VMD](http://www.ks.uiuc.edu/Research/vmd/) has a series of analysis commands that start with the keyword [`measure`](http://www.ks.uiuc.edu/Research/vmd/current/ug/node136.html). They tend to be quite fast as they have (mostly) been optimised in C and some of them will even run on your GPU, if you have the right drivers etc installed. The one we are going to use is `measure centre` which returns the geometric centre of an atom selection.
 
 	>Main< (examples) 4 % set protein [atomselect top "protein"]	atomselect1 	>Main< (examples) 5 % measure center $protein weight mass	42.8310661315918 40.41354751586914 49.69547653198242
 
@@ -31,12 +31,12 @@ Now Tcl being Tcl, lists are a bit different. To pick out the third value we sha
 
 	>Main< (examples) 10 % lindex $proteinCoord 2	49.69547653198242
 
-That's the kernel of what we need to this in VMD (we can simply repeat the commands for the bilayer and subtract one from the other to get the relative depth of the protein). Now let's write a program. 	
+That's the kernel of what we need to this in [VMD](http://www.ks.uiuc.edu/Research/vmd/) (we can simply repeat the commands for the bilayer and subtract one from the other to get the relative depth of the protein). Now let's write a program. 	
 You can run the program as before by either loading it directly into the `Tk Console` window by typing
 
 	>Main< (examples) 11 % source 2-protein-depth-vmd.tcl
 	
-Or in the Terminal loading VMD
+Or in the Terminal loading [VMD](http://www.ks.uiuc.edu/Research/vmd/)
 
 	$  vmd -dispdev text -e 2-protein-depth-vmd.tcl 
 	
@@ -44,7 +44,7 @@ Plotting the resulting data shows the protein is moving by a few Angstroms relat
 
 ## 2.2 MDAnalysis.
 
-Back to python (well, ipython to start with). Let's do the same calculation using MDAnalysis. Again we need to import the module and load the coordinates.
+Back to python (well, ipython to start with). Let's do the same calculation using [MDAnalysis](https://code.google.com/p/mdanalysis/). Again we need to import the module and load the coordinates.
 
 	In [1]: import MDAnalysis
 
@@ -77,4 +77,4 @@ We find that they are different, but not very different (typically at the second
 - Demonstrate the cause of the discrepancy above
 - Generalise the python approach by adding appropriate command line flags (perhaps using the `getopt` module`)
 - Examine the relative motion of different components of the protein e.g. 1st six transmembrane helices versus the last six.
-- Is selecting all the lipid atoms the best approach? What if we only considered the tails? How might we select these in both VMD and MDAnalysis?
+- Is selecting all the lipid atoms the best approach? What if we only considered the tails? How might we select these in both [VMD](http://www.ks.uiuc.edu/Research/vmd/) and [MDAnalysis](https://code.google.com/p/mdanalysis/)?
