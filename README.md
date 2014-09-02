@@ -32,7 +32,7 @@ There are currently three sections to this tutorial:
 3. some more advanced techniques
 
 You will need to have installed
-- git
+- [git](http://git-scm.com)
 - python 2.6.X or 2.7.X, including
     - [numpy](http://www.numpy.org)
     - [scipy](http://www.scipy.org)

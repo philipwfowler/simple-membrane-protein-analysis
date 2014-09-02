@@ -72,7 +72,7 @@ I haven't put the output as it would take up a lot of space. You should see a me
 	In [15]: lipids.numberOfAtoms()
 	Out[15]: 1619
 
-Hurray, an integer. That is basically it; we know what frame we are on and how to count the number of lipids within a specified distance of a protein. In the supplied python script (https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/examples/1-count-lipids-mda.py 1-count-lipids-mdanalysis.py) I've just added some comments, the loop over time steps and the logic to write the numbers to a file and the screen (i.e. STDOUT).  you can run it either by typing
+Hurray, an integer. That is basically it; we know what frame we are on and how to count the number of lipids within a specified distance of a protein. In the supplied python script ([1-count-lipids-mdanalysis.py](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/examples/1-count-lipids-mda.py)) I've just added some comments, the loop over time steps and the logic to write the numbers to a file and the screen (i.e. STDOUT).  you can run it either by typing
 
 	python 1-count-lipids-mdanalysis.py
 
@@ -94,7 +94,7 @@ You should now see see the waters, lipids and protein in the VMD Display. Seeing
 
 	>Main< (examples) 7 % set lipids [atomselect top "resname POPC and within 3.6 of protein"]	atomselect1	>Main< (examples) 8 % $lipids num	1619
 
-The same answer as before which is encouraging! Now we can put the logic into a Tcl script, add the loop and file output and some comments, as before. To run the script, either type the following the Tk Console.
+The same answer as before which is encouraging! Now we can put the logic into a Tcl script, add the loop and file output and some comments, as before. To run the script ([1-count-lipids-vmd.tcl](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/examples/1-count-lipids-vmd.tcl)), either type the following the Tk Console.
 
 	>Main< (examples) 13 % source 1-count-lipids-vmd.tcl
 
@@ -114,8 +114,8 @@ So the only difference is that, as we expected, the [VMD](http://www.ks.uiuc.edu
 
 - Which is faster? Why do you think that is? Do you think it will always be faster?
 - Write down the disadvantages and advantages of each approach
-- Convert the script to work on a coarse-grained MARTINI simulation. What distance should you use then?
-- Add command line arguments (using an appropriate python module like getopt) to generalise the [MDAnalysis](https://code.google.com/p/mdanalysis/) version. Turn the following into arguments:
+- Convert the script to work on a [coarse-grained MARTINI simulation](http://md.chem.rug.nl/cgmartini/). What distance should you use then?
+- Add command line arguments (using an appropriate python module like [`getopt`](https://docs.python.org/2/library/getopt.html)) to generalise the [MDAnalysis](https://code.google.com/p/mdanalysis/) version. Turn the following into arguments:
 	- the name/path of the input PDB/GRO file
 	- the name/path of the input trajectory file
 	- the distance 

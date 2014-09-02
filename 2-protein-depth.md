@@ -31,7 +31,7 @@ Now Tcl being Tcl, lists are a bit different. To pick out the third value we sha
 
 	>Main< (examples) 10 % lindex $proteinCoord 2	49.69547653198242
 
-That's the kernel of what we need to this in [VMD](http://www.ks.uiuc.edu/Research/vmd/) (we can simply repeat the commands for the bilayer and subtract one from the other to get the relative depth of the protein). Now let's write a program. 	
+That's the kernel of what we need to this in [VMD](http://www.ks.uiuc.edu/Research/vmd/) (we can simply repeat the commands for the bilayer and subtract one from the other to get the relative depth of the protein). Now let's write a program ([2-protein-depth-vmd.tcl](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/examples/2-protein-depth-vmd.tcl)). 	
 You can run the program as before by either loading it directly into the `Tk Console` window by typing
 
 	>Main< (examples) 11 % source 2-protein-depth-vmd.tcl
@@ -64,7 +64,7 @@ Remember we just want the *z* value which is the third element which, since this
 	In [5]: protein.centerOfMass()[2]
 	Out[5]: 49.696178896249158
 
-That is basically all we need. Now we can write a python program that puts all this together.
+That is basically all we need. Now we can write a python program that puts all this together ([2-protein-depth-mda.py](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/examples/2-protein-depth-mda.py)).
 
 But do they give the same results? Plotting both sets of data on a graph look pretty similar but if we analyse the files using `diff`
 
@@ -75,6 +75,6 @@ We find that they are different, but not very different (typically at the second
 ## 2.3 Extension exercises
 
 - Demonstrate the cause of the discrepancy above
-- Generalise the python approach by adding appropriate command line flags (perhaps using the `getopt` module`)
+- Generalise the python approach by adding appropriate command line flags (perhaps using the [`getopt`](https://docs.python.org/2/library/getopt.html) module`)
 - Examine the relative motion of different components of the protein e.g. 1st six transmembrane helices versus the last six.
 - Is selecting all the lipid atoms the best approach? What if we only considered the tails? How might we select these in both [VMD](http://www.ks.uiuc.edu/Research/vmd/) and [MDAnalysis](https://code.google.com/p/mdanalysis/)?
