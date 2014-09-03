@@ -1,14 +1,15 @@
 # 2. Measure the depth of the centre of mass of the protein relative to the centre of mass of the bilayer over time
 
-Let's now look at how the protein is moving in the bilayer, specifically whether it is sinking or rising relative to the membrane normal. Caveat: we are going to *assume* that the membrane normal is aligned with the *z* axis (this is common practice). Our patch of bilayer is fairly small, so this is reasonable but it isn't always true! Let's think how the pseudocode might look
+Let's now look at how the protein is moving in the bilayer, specifically whether it is sinking or rising relative to the plane of the membrane. Caveat: we are going to *assume* that the membrane normal is aligned with the *z* axis (this is common practice). Our patch of bilayer is fairly small, so this is reasonable but it isn't always true! Let's start by thinking how the pseudocode might look
 
     load trajectory
-    open a file to store the results
+    open a file for writing the data to
     loop over all frames
         find out the z coordinate of the centre of mass of the protein
         find out the z coordinate of the centre of mass of the bilayer
-        calculate the difference; this is the relative depth of the protein
-        write out the frame number and the relative depth of the protein to disc
+        calculate the relative depth of the protein
+        find out what frame we are on
+        write out the frame number and the relative depth of the protein to the file
     close the file
 
 Like before, we shall do this analysis using both [VMD](http://www.ks.uiuc.edu/Research/vmd/) and python/[MDAnalysis](https://code.google.com/p/mdanalysis/) and compare the results. To avoid too many gear-changes in our brains, let's do [VMD](http://www.ks.uiuc.edu/Research/vmd/) first and then try [MDAnalysis](https://code.google.com/p/mdanalysis/). 
@@ -42,6 +43,8 @@ Or in the Terminal loading [VMD](http://www.ks.uiuc.edu/Research/vmd/)
 	
 Plotting the resulting data shows the protein is moving by a few Angstroms relative to the bilayer. We wouldn't expect a transmembrane protein to move that much (a peripheral protein might though). At this stage we would probably examine different parts of the protein, for example, we might look to see if there were any differences between the N- and C-terminal halves of the protein, or between individual transmembrane helices.
 
+![Graph of something](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/images/graph-2-protein-depth-vmd.png)
+
 ## 2.2 MDAnalysis.
 
 Back to python (well, ipython to start with). Let's do the same calculation using [MDAnalysis](https://code.google.com/p/mdanalysis/). Again we need to import the module and load the coordinates.
@@ -66,11 +69,15 @@ Remember we just want the *z* value which is the third element which, since this
 
 That is basically all we need. Now we can write a python program that puts all this together ([2-protein-depth-mda.py](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/examples/2-protein-depth-mda.py)).
 
-But do they give the same results? Plotting both sets of data on a graph look pretty similar but if we analyse the files using `diff`
+If you run this program and plot the results you should get something that looks similar to the results we got using VMD.
+
+![Graph of something](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/images/graph-2-protein-depth-mda.png)
+
+But are they the same? Analysing the files using `diff`
 
 	diff dat/2-protein-depth-mda.dat dat/2-protein-depth-vmd.dat
 	
-We find that they are different, but not very different (typically at the second decimal place). Do you think this is important? What do you think is responsible? What might you do to check your hypothesis?
+we find that they are different, but not very different (typically at the second decimal place). Do you think this is important? What do you think is responsible? What might you do to check your hypothesis?
 
 ## 2.3 Extension exercises
 

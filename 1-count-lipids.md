@@ -113,15 +113,15 @@ Again, you can plot the data to see if the protein is embedded:
 ![Graph of something](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/images/graph-1-count-lipids-vmd.png)
 
 
-But do we have the same results as we got using [MDAnalysis](https://code.google.com/p/mdanalysis/)? Try using `diff` which is a very useful Linux command that compares two text files.
+It looks the same as we got using [MDAnalysis](https://code.google.com/p/mdanalysis/), but how similar are the results? Try using `diff` which is a very useful Linux command that compares two text files.
 
 	$ diff dat/1-count-lipids-mda.dat dat/1-count-lipids-vmd.dat 
 	0a1
 	>       0     730
 
-Yes - the only difference is that, as we expected, the [VMD](http://www.ks.uiuc.edu/Research/vmd/) file contains a frame 0 which is the results for the GRO file.
+Yes both methods produce identical results - the only difference is that, as we expected, the [VMD](http://www.ks.uiuc.edu/Research/vmd/) file contains a frame 0 which is the results for the GRO file.
 
-## 1.3 Extension exercises
+## 1.3 Extensions
 
 - Which is faster? Why do you think that is? Do you think it will always be faster?
 - Write down the disadvantages and advantages of each approach
@@ -132,3 +132,5 @@ Yes - the only difference is that, as we expected, the [VMD](http://www.ks.uiuc.
 	- the distance 
 	- the name/path of the output file
 	- and perhaps the string used to identify the lipids (here it is "resname POPC")
+
+Now we are ready to move onto the [next exercise](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/2-protein-depth.md).	

@@ -24,7 +24,7 @@ for timestep in u.trajectory:
     # so we can see what is happening, write the output to the screen for the moment
     print frame,lipidNumber
 
-    # write out the frame number and number of lipid atoms to file (the bit in the brackets formats the data nicely)
+    # write out the frame number and number of lipid atoms to file (the bit in the quotes formats the data nicely)
     print >> OUTPUT, "%7i %7i" % (frame,lipidNumber)
     
 # close the file    
