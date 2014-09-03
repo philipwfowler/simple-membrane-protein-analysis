@@ -86,8 +86,8 @@ or, since I have made the file executable using `chmod`  you can run it directly
 
 It should write the data to the screen (STDOUT) and also to a file called `dat/1-count-lipids-mda.dat`. Now you can plot these data using your preferred graphing package (I'd recommend gnuplot). Does the protein appear to be embedded to you?
 
-![Graph]
-(https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/images/graph-1-count-lipids-mda.png	
+![Graph of something](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/images/graph-1-count-lipids-mda.png)	
+
 ## 1.2 VMD
 
 Now let's try and do exactly the same thing in [VMD](http://www.ks.uiuc.edu/Research/vmd/). Although you may have done some analysis in [VMD](http://www.ks.uiuc.edu/Research/vmd/) using a bespoke GUI we are not going to do that. We are going to write some code in `Tcl`, which is the scripting language [VMD](http://www.ks.uiuc.edu/Research/vmd/) exposes that lets you do this sort of thing. `Tcl` can feel a bit strange if you are used to programming `C`, `python`, `perl` etc as, for example, it has no equals sign. You'll see what I mean. First, load [VMD](http://www.ks.uiuc.edu/Research/vmd/), either by clicking the icon or typing `vmd` into your terminal.
