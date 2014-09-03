@@ -6,20 +6,20 @@ mol addfile trajectory-files/peptso-1a-100ns-dt1ns.xtc type xtc first 0 last -1 
 # open a file for writing the data to
 set OUTPUT [open "dat/1-count-lipids-vmd.dat" w]
 
-# iterate through the trajectory, frame by frame
-for {set timestep 0} {$timestep < [molinfo top get numframes]} {incr timestep 1} {
+# loop over all frames
+for {set frame 0} {$frame < [molinfo top get numframes]} {incr frame 1} {
 
-	# identify the lipid atoms within 0.36 nm of the protein
-	set lipids [atomselect top "resname POPC and within 3.6 of protein" frame $timestep]
+	# identify all lipid atoms within 0.36nm of any protein atom
+	set lipids [atomselect top "resname POPC and within 3.6 of protein" frame $frame]
 	
-    # how many atoms is that?
+    # count the lipid atoms
 	set lipidsNumber [$lipids num]
 		
 	# so we can see what is happening, write the output to the screen for the moment
-	puts "$timestep $lipidsNumber"
+	puts "$frame $lipidsNumber"
 
-	# write the data for this timestep to the file (the bit in the brackets formats the data nicely)
-	puts $OUTPUT [format "%7i %7i" $timestep $lipidsNumber]
+	# write out the frame number and number of lipid atoms to file  (the bit in the quotes formats the data nicely)
+	puts $OUTPUT [format "%7i %7i" $frame $lipidsNumber]
 
 }
 	

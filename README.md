@@ -6,7 +6,7 @@ The aims are:
 - to show you how to run some simple analysis on a membrane protein molecular dynamics simulation
 - to encourage you to write your own analysis code, rather than use a 'script' that someone gives you 
 - to show you how simple analysis tasks can often be done more than one way. Here I shall use both [VMD](http://www.ks.uiuc.edu/Research/vmd/) and [MDAnalysis](https://code.google.com/p/mdanalysis/) to do the same analysis.
-- to introduce you briefly to the importance of writing good code and [Software Carpentry](http://software-carpentry.org/index.html), specifically to
+- to introduce you briefly to the importance of writing [good code](http://www.xkcd.com/844/) and [Software Carpentry](http://software-carpentry.org/index.html), specifically to
     - test your code
     - include helpful comments
     - generalise your code so it can be more easily used again

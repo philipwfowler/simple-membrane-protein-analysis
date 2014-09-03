@@ -29,9 +29,9 @@ We won't go through any problems in this section but will instead just look at s
 ###Advantages
 
 - Because [MDAnalysis](https://code.google.com/p/mdanalysis/) is a python module, it is independent of whichever python implementation you are using. So you can use regular `python` or perhaps `ipython` or even an [`ipython notebook`](http://ipython.org/notebook.html). 
-- This also means that once you have the coordinates loaded in and available through the Universe object, you are free to use any other python module to help in your analysis. The most obvious ones are [numpy](http://www.numpy.org) and [scipy](http://www.scipy.org), but there are many that could be useful, e.g. [networkx](https://networkx.github.io) or even [image processing techniques](http://pubs.rsc.org/en/Content/ArticleLanding/2014/FD/c3fd00131h).
+- This also means that once you have the coordinates loaded in and available through the Universe object, you are free to use [any other python module](http://xkcd.com/353/) to help in your analysis. The most obvious ones are [numpy](http://www.numpy.org) and [scipy](http://www.scipy.org), but there are many that could be useful, e.g. [networkx](https://networkx.github.io) or even [image processing techniques](http://pubs.rsc.org/en/Content/ArticleLanding/2014/FD/c3fd00131h).
 - Because you can add command line flag functionality to your program it is easy to integrate it into an automated workflow.
-- python makes writing good code since you can 
+- python makes writing [good code](http://www.xkcd.com/844/) easy since you can 
 	- add unit tests (e.g. [nose](https://nose.readthedocs.org/en/latest/))
 	- automatically create documentation (e.g. [python docstrings](http://www.pythonforbeginners.com/basics/python-docstrings))
 
