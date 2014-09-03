@@ -108,7 +108,12 @@ Or, close [VMD](http://www.ks.uiuc.edu/Research/vmd/) (type `quit` in the `Tk Co
 
 	$ vmd -dispdev text -e 1-count-lipids-vmd.tcl
 
-Again, you can plot the data to see if the protein is embedded. But do we have the same results as we got using [MDAnalysis](https://code.google.com/p/mdanalysis/)? Try using `diff` which is a very useful Linux command that compares two text files.
+Again, you can plot the data to see if the protein is embedded: 
+
+![Graph of something](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/images/graph-1-count-lipids-vmd.png)
+
+
+But do we have the same results as we got using [MDAnalysis](https://code.google.com/p/mdanalysis/)? Try using `diff` which is a very useful Linux command that compares two text files.
 
 	$ diff dat/1-count-lipids-mda.dat dat/1-count-lipids-vmd.dat 
 	0a1
