@@ -79,7 +79,7 @@ But are they the same? Analysing the files using `diff`
 	
 we find that they are different, but not very different (typically at the second decimal place). One way to see how different is to plot the two datasets, one on the x-axis and the other on the y-axis. 
 
-![Graph of something](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/images/graph-2-protein-depth-comaparison.png)
+![Graph of something](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/images/graph-2-protein-depth-comparison.png)
 
 Do you think this discrepancy is important? What do you think is responsible? What might you do to check your hypothesis?
 
