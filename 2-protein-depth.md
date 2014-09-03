@@ -77,11 +77,15 @@ But are they the same? Analysing the files using `diff`
 
 	diff dat/2-protein-depth-mda.dat dat/2-protein-depth-vmd.dat
 	
-we find that they are different, but not very different (typically at the second decimal place). Do you think this is important? What do you think is responsible? What might you do to check your hypothesis?
+we find that they are different, but not very different (typically at the second decimal place). One way to see how different is to plot the two datasets, one on the x-axis and the other on the y-axis. 
+
+![Graph of something](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/images/graph-2-protein-depth-comaparison.png)
+
+Do you think this discrepancy is important? What do you think is responsible? What might you do to check your hypothesis?
 
 ## 2.3 Extension exercises
 
-- Demonstrate the cause of the discrepancy above
+- Demonstrate the cause of the discrepancy above.
 - Generalise the python approach by adding appropriate command line flags (perhaps using the [`getopt`](https://docs.python.org/2/library/getopt.html) module`)
-- Examine the relative motion of different components of the protein e.g. 1st six transmembrane helices versus the last six.
+- Examine the relative motion of different components of the protein e.g. 1st six transmembrane helices versus the last six. How will you identify where the helices start and finish?
 - Is selecting all the lipid atoms the best approach? What if we only considered the tails? How might we select these in both [VMD](http://www.ks.uiuc.edu/Research/vmd/) and [MDAnalysis](https://code.google.com/p/mdanalysis/)?
