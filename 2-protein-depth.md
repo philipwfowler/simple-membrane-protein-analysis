@@ -89,3 +89,5 @@ Do you think this discrepancy is important? What do you think is responsible? Wh
 - Generalise the python approach by adding appropriate command line flags (perhaps using the [`getopt`](https://docs.python.org/2/library/getopt.html) module`)
 - Examine the relative motion of different components of the protein e.g. 1st six transmembrane helices versus the last six. How will you identify where the helices start and finish?
 - Is selecting all the lipid atoms the best approach? What if we only considered the tails? How might we select these in both [VMD](http://www.ks.uiuc.edu/Research/vmd/) and [MDAnalysis](https://code.google.com/p/mdanalysis/)?
+
+That is the end of the exercises. In the [last section](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/3-advanced.md) we will discuss some of the advantages and disadvantages of [VMD](http://www.ks.uiuc.edu/Research/vmd/) and [MDAnalysis](https://code.google.com/p/mdanalysis/). 
