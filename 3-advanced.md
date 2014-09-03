@@ -48,4 +48,4 @@ We won't go through any problems in this section but will instead just look at s
 - [MDAnalysis](https://code.google.com/p/mdanalysis/) has a neat function called [LeafletFinder](https://mdanalysis.googlecode.com/svn/trunk/doc/html/documentation_pages/analysis/leaflet.html) that will work out which lipids belong to the top leaflet and which belong to the lower leaflet. This works on highly curved bilayers and is a surprisingly difficult problem.
 - Automate the [generation of HOLE profiles](https://pythonhosted.org/MDAnalysis/documentation_pages/analysis/hole.html). HOLE is the standard code for measuring a pore profile through e.g. an ion channel.
 
-That is it. Hope you found this short tutorial helpful. Please send me any comments, or even close the repo, make some changes and send me a pull request.
+That is it. Hope you found this short tutorial helpful. Please send me any comments, or even clone the repo, make some changes and send me a pull request.
