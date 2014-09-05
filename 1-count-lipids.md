@@ -78,11 +78,11 @@ I haven't put the output as it would take up a lot of space. You should see a me
 
 Hurray, an integer - we know how to handle them. That is basically it; we know what frame we are on and how to count the number of lipids within a specified distance of a protein. In the supplied python script ([1-count-lipids-mdanalysis.py](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/examples/1-count-lipids-mda.py)) I've added some comments that match the pseudo-code, the loop over all frames and the logic to write the numbers to both a file and the screen (i.e. STDOUT).  You can run it either by typing
 
-	python 1-count-lipids-mdanalysis.py
+	python 1-count-lipids-mda.py
 
 or, since I have made the file executable using `chmod`  you can run it directly 
 
-	./1-count-lipids-mdanalysis.py
+	./1-count-lipids-mda.py
 
 It should write the data to the screen (STDOUT) and also to a file called `dat/1-count-lipids-mda.dat`. Now you can plot these data using your preferred graphing package (I'd recommend gnuplot). Does the protein appear to be embedded to you?
 
@@ -94,11 +94,17 @@ Now let's try and do exactly the same thing in [VMD](http://www.ks.uiuc.edu/Rese
 
 It is a bit harder to prototype in [VMD](http://www.ks.uiuc.edu/Research/vmd/), but let's try it. You'll need to have the `Tk Console` window open: go to `Extensions` then `Tk Console` and something that looks a bit like a Terminal will appear, but with coloured text on a white background. Again, we shall just follow the pseudo-code, so first, let's load in the trajectory.
 
-	(examples) 1 % mol load gro trajectory-files/peptso-1a.gro	0	>Main< (examples) 2 % mol addfile trajectory-files/peptso-1a-100ns-dt1ns.xtc type xtc first 0 last -1 waitfor all	0
+	(examples) 1 % mol load gro trajectory-files/peptso-1a.gro
+	0
+	>Main< (examples) 2 % mol addfile trajectory-files/peptso-1a-100ns-dt1ns.xtc type xtc first 0 last -1 waitfor all
+	0
 
 You should now see see the waters, lipids and protein in the VMD Display. Seeing what is going on is a key advantage of using [VMD](http://www.ks.uiuc.edu/Research/vmd/). Again, we shall just work on one frame and wrap everything in a loop later. Here we bump into an annoying inconsistency between the two packages: [VMD](http://www.ks.uiuc.edu/Research/vmd/) loads the GRO/PDB file and makes that frame 0, then it loads the trajectory (frames 1-101) and it leaves you at the last frame, 101. [MDAnalysis](https://code.google.com/p/mdanalysis/) just uses the GRO/PDB file to parse the trajectory which is stored in  frames 1-101 and you start at frame 1. For consistency I'm going to return to the start using the arrows in the `Main` window (or you could type `animate goto 1` in the `Tk Console`). Now to see how many lipid atoms are within 0.36 nm of the protein:
 
-	>Main< (examples) 7 % set lipids [atomselect top "resname POPC and within 3.6 of protein"]	atomselect1	>Main< (examples) 8 % $lipids num	1619
+	>Main< (examples) 7 % set lipids [atomselect top "resname POPC and within 3.6 of protein"]
+	atomselect1
+	>Main< (examples) 8 % $lipids num
+	1619
 
 The same answer as before which is encouraging! Now we can put the logic into a `Tcl` script, add the loop and file output and some comments, as before. To run the script ([1-count-lipids-vmd.tcl](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/examples/1-count-lipids-vmd.tcl)), either type the following the `Tk Console`.
 
