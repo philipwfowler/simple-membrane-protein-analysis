@@ -18,19 +18,27 @@ Like before, we shall do this analysis using both [VMD](http://www.ks.uiuc.edu/R
 
 Fire up [VMD](http://www.ks.uiuc.edu/Research/vmd/) as before and open the `Tk Console` window. First we need to load the trajectory, just as before.
 
-	(examples) 1 % mol load gro trajectory-files/peptso-1a.gro	0	>Main< (examples) 2 % mol addfile trajectory-files/peptso-1a-100ns-dt1ns.xtc type xtc first 0 last -1 waitfor all	0
+	(examples) 1 % mol load gro trajectory-files/peptso-1a.gro
+	0
+	>Main< (examples) 2 % mol addfile trajectory-files/peptso-1a-100ns-dt1ns.xtc type xtc first 0 last -1 waitfor all
+	0
 
 [VMD](http://www.ks.uiuc.edu/Research/vmd/) has a series of analysis commands that start with the keyword [`measure`](http://www.ks.uiuc.edu/Research/vmd/current/ug/node136.html). They tend to be quite fast as they have (mostly) been optimised in C and some of them will even run on your GPU, if you have the right drivers etc installed. The one we are going to use is `measure centre` which returns the geometric centre of an atom selection.
 
-	>Main< (examples) 4 % set protein [atomselect top "protein"]	atomselect1 	>Main< (examples) 5 % measure center $protein weight mass	42.8310661315918 40.41354751586914 49.69547653198242
+	>Main< (examples) 4 % set protein [atomselect top "protein"]
+	atomselect1 
+	>Main< (examples) 5 % measure center $protein weight mass
+	42.8310661315918 40.41354751586914 49.69547653198242
 
 Let's store the centre of mass in a variable.
 
-	>Main< (examples) 8 % set proteinCoord [measure center $protein weight mass]	42.8310661315918 40.41354751586914 49.69547653198242
+	>Main< (examples) 8 % set proteinCoord [measure center $protein weight mass]
+	42.8310661315918 40.41354751586914 49.69547653198242
 
 Now Tcl being Tcl, lists are a bit different. To pick out the third value we shall use [lindex](http://www.tcl.tk/man/tcl8.4/TclCmd/lindex.htm) (remember, like python, lists in Tcl are [0-based](http://www.xkcd.com/163/)).
 
-	>Main< (examples) 10 % lindex $proteinCoord 2	49.69547653198242
+	>Main< (examples) 10 % lindex $proteinCoord 2
+	49.69547653198242
 
 That's the kernel of what we need to this in [VMD](http://www.ks.uiuc.edu/Research/vmd/) (we can simply repeat the commands for the bilayer and subtract one from the other to get the relative depth of the protein). Now let's write a program ([2-protein-depth-vmd.tcl](https://github.com/philipwfowler/simple-membrane-protein-analysis/blob/master/examples/2-protein-depth-vmd.tcl)). 	
 You can run the program as before by either loading it directly into the `Tk Console` window by typing
@@ -51,7 +59,7 @@ Back to python (well, ipython to start with). Let's do the same calculation usin
 
 	In [1]: import MDAnalysis
 
-	In [2]: u = MDAnalysis.Universe("example-trajectory/peptso-1a.gro","example-trajectory/peptso-1a-100ns-dt1ns.xtc"
+	In [2]: u = MDAnalysis.Universe("trajectory-files/peptso-1a.gro","trajectory-files/peptso-1a-100ns-dt1ns.xtc"
 
 Again, we will just look at the first frame of the trajectory. First we need to identify the protein.
 
