@@ -59,7 +59,7 @@ Back to python (well, ipython to start with). Let's do the same calculation usin
 
 	In [1]: import MDAnalysis
 
-	In [2]: u = MDAnalysis.Universe("trajectory-files/peptso-1a.gro","trajectory-files/peptso-1a-100ns-dt1ns.xtc"
+	In [2]: u = MDAnalysis.Universe("trajectory-files/peptso-1a.gro","trajectory-files/peptso-1a-100ns-dt1ns.xtc")
 
 Again, we will just look at the first frame of the trajectory. First we need to identify the protein.
 
