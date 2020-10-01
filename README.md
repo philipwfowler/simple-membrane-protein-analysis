@@ -1,26 +1,26 @@
-# simple-membrane-protein-analysis
+# Simple-Membrane-Protein-Analysis
 
-This is a short tutorial that will show you how to use both [VMD](http://www.ks.uiuc.edu/Research/vmd/) and [MDAnalysis](https://code.google.com/p/mdanalysis/) to analyse a molecular dynamics simulation of a membrane protein. A sample trajectory is provided (of [a bacterial peptide transporter](http://emboj.embopress.org/content/30/2/417) which, structurally, belongs to the [Major Facilitator Superfamily](http://en.wikipedia.org/wiki/Major_facilitator_superfamily) if you are interested). Although the trajectory we shall use was generated using [GROMACS](http://www.gromacs.org), all the examples can, with a few tweaks, could be applied to trajectories produced by other packages, such as NAMD, CHARMM or AMBER.
+This is a short tutorial that will show you how to use both [VMD](http://www.ks.uiuc.edu/Research/vmd/) and [MDAnalysis](https://code.google.com/p/mdanalysis/) to analyze a molecular dynamics simulation of a membrane protein. A sample trajectory is provided (of [a bacterial peptide transporter](http://emboj.embopress.org/content/30/2/417) which, structurally, belongs to the [Major Facilitator Superfamily](http://en.wikipedia.org/wiki/Major_facilitator_superfamily) if you are interested). Although the trajectory we shall use was generated using [GROMACS](http://www.gromacs.org), all the examples can, with a few tweaks, could be applied to trajectories produced by other packages, such as NAMD, CHARMM, or AMBER.
 
 The aims are:
-- to show you how to run some simple analysis on a membrane protein molecular dynamics simulation
-- to encourage you to write your own analysis code, rather than use a 'script' that someone gives you 
-- to show you how simple analysis tasks can often be done more than one way. Here I shall use both [VMD](http://www.ks.uiuc.edu/Research/vmd/) and [MDAnalysis](https://code.google.com/p/mdanalysis/) to do the same analysis.
-- to introduce you briefly to the importance of writing [good code](http://www.xkcd.com/844/) and [Software Carpentry](http://software-carpentry.org/index.html), specifically to
+- To show you how to run some simple analysis on a membrane protein molecular dynamics simulation
+- To encourage you to write your own analysis code, rather then use a 'script' that someone gives you 
+- To show you how simple analysis tasks can often be done more than one way. Here I shall use both [VMD](http://www.ks.uiuc.edu/Research/vmd/) and [MDAnalysis](https://code.google.com/p/mdanalysis/) to do the same analysis.
+- To introduce you briefly to the importance of writing [good code](http://www.xkcd.com/844/) and [Software Carpentry](http://software-carpentry.org/index.html), specifically to
     - test your code
     - include helpful comments
     - generalise your code so it can be more easily used again
     - fit into a (semi)-automated workflow
 
 We won't be
-- exhaustively looking at all the ways you can analysis membrane proteins
-- categorically saying which approach is 'best'
+- Exhaustively looking at all the ways you can analysis membrane proteins
+- Categorically saying which approach is 'best'
 
 You need to understand something about
-- membrane proteins
-- molecular dynamics simulations
-- writing computer code (any language)
-- ideally 
+- Membrane proteins
+- Molecular dynamics simulations
+- Writing computer code (any language)
+- Ideally 
 	- be familiar with [VMD](http://www.ks.uiuc.edu/Research/vmd/)
 	- be familiar with simple python
 
@@ -33,7 +33,7 @@ You will need to have installed
     - [scipy](http://www.scipy.org)
     - [MDAnalysis](https://code.google.com/p/mdanalysis/)
 - [VMD](http://www.ks.uiuc.edu/Research/vmd/)
-- a graphing package. I like [gnuplot](http://gnuplot.sourceforge.net) but XMGrace or Excel are fine too.
+- A graphing package. I like [gnuplot](http://gnuplot.sourceforge.net) but XMGrace or Excel are fine too.
 
 To get started you will need to clone this [git](http://git-scm.com) repository (collection of files in a folder) onto your computer. If you are using a Mac or a Linux machine, open a Terminal and check you have [git](http://git-scm.com) by typing
 
